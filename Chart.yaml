@@ -1,0 +1,12 @@
+apiVersion: v1
+name: treactor
+version: 0.1.0
+tillerVersion: ">=2.7.2"
+description: OpenTelemetry Collector and Agents
+keywords:
+  - opentelemetry
+  - otel
+  - treactor
+sources:
+  - https://github.com/treactor/treactor-helm
+engine: gotpl

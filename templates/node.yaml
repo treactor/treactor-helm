@@ -1,0 +1,143 @@
+{{ range $i, $element := .Values.elements -}}
+{{- if le $element.number $.Values.maxNumber -}}
+{{- $framework := "" -}}
+{{/* special selection for bond, ui and api */}}
+{{- if lt $element.number 1.0 -}}
+  {{- $framework = "treactorGo" -}}
+  {{- if eq $element.symbol "ui" -}}
+    {{- $framework = "treactorJava" -}}
+  {{- end -}}
+  {{- else -}}
+  {{- range $i, $period := $.Values.periods -}}
+  {{- if eq $element.period $period.period -}}
+    {{- $framework = $period.framework -}}
+  {{- end -}}
+  {{- end -}}
+  {{- range $i, $group := $.Values.groups -}}
+  {{- if eq $element.group $group.group -}}
+  {{- $framework = $group.framework -}}
+  {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{/* select the correct framework */}}
+  {{- $image := "" -}}
+  {{- $version := "" -}}
+  {{- $current := $.Values.treactor -}}
+{{- if eq "treactorJava" $framework -}}
+  {{- $current = $.Values.treactorJava -}}
+  {{- $image = printf "%s:%s" $current.image.repository $current.image.tag -}}
+  {{- $version = $current.image.tag -}}
+{{- end -}}
+{{- if eq "treactorNode" $framework -}}
+  {{- $current = $.Values.treactorNode -}}
+  {{- $image = printf "%s:%s" $current.image.repository $current.image.tag -}}
+  {{- $version = $current.image.tag -}}
+{{- end -}}
+{{- if eq "treactorPython" $framework -}}
+  {{- $current = $.Values.treactorPython -}}
+  {{- $image = printf "%s:%s" $current.image.repository $current.image.tag -}}
+  {{- $version = $current.image.tag -}}
+{{- end -}}
+{{- if eq "treactorDotNET" $framework -}}
+  {{- $current = $.Values.treactorDotNET -}}
+  {{- $image = printf "%s:%s" $current.image.repository $current.image.tag -}}
+  {{- $version = $current.image.tag -}}
+{{- end -}}
+{{/* if no framework is selected select go */}}
+{{- if eq "" $image -}}
+  {{- $current = $.Values.treactorGo -}}
+  {{- $image = printf "%s:%s" $current.image.repository $current.image.tag -}}
+  {{- $version = $current.image.tag -}}
+{{- end -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{$element.module}}-{{lower $element.symbol}}
+{{/*  labels:*/}}
+{{/*      number: {{$element.number}}*/}}
+{{/*      period: {{$element.period}}*/}}
+{{/*      group: {{$element.group}}*/}}
+{{/*      symbol: {{$element.symbol}}*/}}
+{{/*      element: {{$element.element}}*/}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{$element.module}}-{{lower $element.symbol}}
+  name: {{$element.module}}-{{lower $element.symbol}}
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 3330
+  selector:
+    app: {{$element.module}}-{{lower $element.symbol}}
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{$element.module}}-{{lower $element.symbol}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{$element.module}}-{{lower $element.symbol}}
+  template:
+    metadata:
+      labels:
+        app: {{$element.module}}-{{lower $element.symbol}}
+        version: '{{$version}}'
+    spec:
+      serviceAccountName: {{$element.module}}-{{lower $element.symbol}}
+      containers:
+        - name: {{$element.module}}-{{lower $element.symbol}}
+          image: {{$image}}
+          #imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
+          env:
+            - name: PORT
+              value: '3330'
+            - name: SERVICE_NAME
+              value: '{{$element.module}}-{{lower $element.symbol}}'
+            - name: SERVICE_VERSION
+              value: '{{$version}}'
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: K8S_NAMESPACE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: K8S_POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: "OTEL_EXPORTER"
+              value: "otlp"
+            - name: "OTEL_EXPORTER_OTLP_ENDPOINT"
+              value: "$(HOST_IP):4317"
+            - name: "OTEL_RESOURCE_ATTRIBUTES"
+              value: "k8s.pod.uid=$(K8S_POD_UID),k8s.pod.name=$(K8S_POD_NAME),k8s.namespace.name=$(K8S_NAMESPACE_NAME),service.name=$(SERVICE_NAME),service.version=$(SERVICE_VERSION)"
+            - name: TREACTOR_MODE
+              value: 'k8s'
+            - name: TREACTOR_TRACE_PROPAGATION
+              value: 'w3c'
+            - name: TREACTOR_TRACE_INTERNAL
+              value: '1'
+          ports:
+            - containerPort: 3330
+              name: http
+              protocol: TCP
+          {{ include "treactor.resource" $current | indent 10 | trim }}
+---
+{{- end -}}
+{{- end }}

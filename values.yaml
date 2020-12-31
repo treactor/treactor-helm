@@ -1,0 +1,810 @@
+treactor:
+  image:
+    repository: gcr.io/treactor/treactor-go
+    tag: "latest"
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "250m"
+    limits:
+      memory: "64Mi"
+      cpu: "1"
+
+treactorGo:
+  image:
+    repository: gcr.io/treactor/treactor-go
+    tag: "latest"
+
+treactorJava:
+  image:
+    repository: gcr.io/treactor/treactor-java
+    tag: "latest"
+
+treactorNode:
+  image:
+    repository: gcr.io/treactor/treactor-node
+    tag: "latest"
+
+treactorPython:
+  image:
+    repository: gcr.io/treactor/treactor-python
+    tag: "latest"
+
+treactorDotNET:
+  image:
+    repository: gcr.io/treactor/treactor-dotnet
+    tag: "latest"
+
+maxNumber: 118
+maxBond: 5
+
+periods:
+  - period: 1
+    framework: ""
+  - period: 2
+    framework: ""
+  - period: 3
+    framework: ""
+  - period: 4
+    framework: ""
+  - period: 5
+    framework: ""
+  - period: 6
+    framework: ""
+  - period: 7
+    framework: ""
+
+groups:
+  - group: 0
+    framework: ""
+
+bonds:
+  - bond: "1"
+    framework: ""
+  - bond: "2"
+    framework: ""
+  - bond: "3"
+    framework: ""
+  - bond: "4"
+    framework: ""
+  - bond: "5"
+    framework: ""
+  - bond: "n"
+    framework: ""
+
+elements:
+  - number: 1
+    symbol: "H"
+    element: "Hydrogen"
+    group: 1
+    period: 1
+    module: "atom"
+  - number: 2
+    symbol: "He"
+    element: "Helium"
+    group: 18
+    period: 1
+    module: "atom"
+  - number: 3
+    symbol: "Li"
+    element: "Lithium"
+    group: 1
+    period: 2
+    module: "atom"
+  - number: 4
+    symbol: "Be"
+    element: "Beryllium"
+    group: 2
+    period: 2
+    module: "atom"
+  - number: 5
+    symbol: "B"
+    element: "Boron"
+    group: 13
+    period: 2
+    module: "atom"
+  - number: 6
+    symbol: "C"
+    element: "Carbon"
+    group: 14
+    period: 2
+    module: "atom"
+  - number: 7
+    symbol: "N"
+    element: "Nitrogen"
+    group: 15
+    period: 2
+    module: "atom"
+  - number: 8
+    symbol: "O"
+    element: "Oxygen"
+    group: 16
+    period: 2
+    module: "atom"
+  - number: 9
+    symbol: "F"
+    element: "Fluorine"
+    group: 17
+    period: 2
+    module: "atom"
+  - number: 10
+    symbol: "Ne"
+    element: "Neon"
+    group: 18
+    period: 2
+    module: "atom"
+  - number: 11
+    symbol: "Na"
+    element: "Sodium"
+    group: 1
+    period: 3
+    module: "atom"
+  - number: 12
+    symbol: "Mg"
+    element: "Magnesium"
+    group: 2
+    period: 3
+    module: "atom"
+  - number: 13
+    symbol: "Al"
+    element: "Aluminium"
+    group: 13
+    period: 3
+    module: "atom"
+  - number: 14
+    symbol: "Si"
+    element: "Silicon"
+    group: 14
+    period: 3
+    module: "atom"
+  - number: 15
+    symbol: "P"
+    element: "Phosphorus"
+    group: 15
+    period: 3
+    module: "atom"
+  - number: 16
+    symbol: "S"
+    element: "Sulfur"
+    group: 16
+    period: 3
+    module: "atom"
+  - number: 17
+    symbol: "Cl"
+    element: "Chlorine"
+    group: 17
+    period: 3
+    module: "atom"
+  - number: 18
+    symbol: "Ar"
+    element: "Argon"
+    group: 18
+    period: 3
+    module: "atom"
+  - number: 19
+    symbol: "K"
+    element: "Potassium"
+    group: 1
+    period: 4
+    module: "atom"
+  - number: 20
+    symbol: "Ca"
+    element: "Calcium"
+    group: 2
+    period: 4
+    module: "atom"
+  - number: 21
+    symbol: "Sc"
+    element: "Scandium"
+    group: 3
+    period: 4
+    module: "atom"
+  - number: 22
+    symbol: "Ti"
+    element: "Titanium"
+    group: 4
+    period: 4
+    module: "atom"
+  - number: 23
+    symbol: "V"
+    element: "Vanadium"
+    group: 5
+    period: 4
+    module: "atom"
+  - number: 24
+    symbol: "Cr"
+    element: "Chromium"
+    group: 6
+    period: 4
+    module: "atom"
+  - number: 25
+    symbol: "Mn"
+    element: "Manganese"
+    group: 7
+    period: 4
+    module: "atom"
+  - number: 26
+    symbol: "Fe"
+    element: "Iron"
+    group: 8
+    period: 4
+    module: "atom"
+  - number: 27
+    symbol: "Co"
+    element: "Cobalt"
+    group: 9
+    period: 4
+    module: "atom"
+  - number: 28
+    symbol: "Ni"
+    element: "Nickel"
+    group: 10
+    period: 4
+    module: "atom"
+  - number: 29
+    symbol: "Cu"
+    element: "Copper"
+    group: 11
+    period: 4
+    module: "atom"
+  - number: 30
+    symbol: "Zn"
+    element: "Zinc"
+    group: 12
+    period: 4
+    module: "atom"
+  - number: 31
+    symbol: "Ga"
+    element: "Gallium"
+    group: 13
+    period: 4
+    module: "atom"
+  - number: 32
+    symbol: "Ge"
+    element: "Germanium"
+    group: 14
+    period: 4
+    module: "atom"
+  - number: 33
+    symbol: "As"
+    element: "Arsenic"
+    group: 15
+    period: 4
+    module: "atom"
+  - number: 34
+    symbol: "Se"
+    element: "Selenium"
+    group: 16
+    period: 4
+    module: "atom"
+  - number: 35
+    symbol: "Br"
+    element: "Bromine"
+    group: 17
+    period: 4
+    module: "atom"
+  - number: 36
+    symbol: "Kr"
+    element: "Krypton"
+    group: 18
+    period: 4
+    module: "atom"
+  - number: 37
+    symbol: "Rb"
+    element: "Rubidium"
+    group: 1
+    period: 5
+    module: "atom"
+  - number: 38
+    symbol: "Sr"
+    element: "Strontium"
+    group: 2
+    period: 5
+    module: "atom"
+  - number: 39
+    symbol: "Y"
+    element: "Yttrium"
+    group: 3
+    period: 5
+    module: "atom"
+  - number: 40
+    symbol: "Zr"
+    element: "Zirconium"
+    group: 4
+    period: 5
+    module: "atom"
+  - number: 41
+    symbol: "Nb"
+    element: "Niobium"
+    group: 5
+    period: 5
+    module: "atom"
+  - number: 42
+    symbol: "Mo"
+    element: "Molybdenum"
+    group: 6
+    period: 5
+    module: "atom"
+  - number: 43
+    symbol: "Tc"
+    element: "Technetium"
+    group: 7
+    period: 5
+    module: "atom"
+  - number: 44
+    symbol: "Ru"
+    element: "Ruthenium"
+    group: 8
+    period: 5
+    module: "atom"
+  - number: 45
+    symbol: "Rh"
+    element: "Rhodium"
+    group: 9
+    period: 5
+    module: "atom"
+  - number: 46
+    symbol: "Pd"
+    element: "Palladium"
+    group: 10
+    period: 5
+    module: "atom"
+  - number: 47
+    symbol: "Ag"
+    element: "Silver"
+    group: 11
+    period: 5
+    module: "atom"
+  - number: 48
+    symbol: "Cd"
+    element: "Cadmium"
+    group: 12
+    period: 5
+    module: "atom"
+  - number: 49
+    symbol: "In"
+    element: "Indium"
+    group: 13
+    period: 5
+    module: "atom"
+  - number: 50
+    symbol: "Sn"
+    element: "Tin"
+    group: 14
+    period: 5
+    module: "atom"
+  - number: 51
+    symbol: "Sb"
+    element: "Antimony"
+    group: 15
+    period: 5
+    module: "atom"
+  - number: 52
+    symbol: "Te"
+    element: "Tellurium"
+    group: 16
+    period: 5
+    module: "atom"
+  - number: 53
+    symbol: "I"
+    element: "Iodine"
+    group: 17
+    period: 5
+    module: "atom"
+  - number: 54
+    symbol: "Xe"
+    element: "Xenon"
+    group: 18
+    period: 5
+    module: "atom"
+  - number: 55
+    symbol: "Cs"
+    element: "Caesium"
+    group: 1
+    period: 6
+    module: "atom"
+  - number: 56
+    symbol: "Ba"
+    element: "Barium"
+    group: 2
+    period: 6
+    module: "atom"
+  - number: 57
+    symbol: "La"
+    element: "Lanthanum"
+    group: 3
+    period: 6
+    module: "atom"
+  - number: 58
+    symbol: "Ce"
+    element: "Cerium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 59
+    symbol: "Pr"
+    element: "Praseodymium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 60
+    symbol: "Nd"
+    element: "Neodymium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 61
+    symbol: "Pm"
+    element: "Promethium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 62
+    symbol: "Sm"
+    element: "Samarium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 63
+    symbol: "Eu"
+    element: "Europium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 64
+    symbol: "Gd"
+    element: "Gadolinium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 65
+    symbol: "Tb"
+    element: "Terbium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 66
+    symbol: "Dy"
+    element: "Dysprosium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 67
+    symbol: "Ho"
+    element: "Holmium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 68
+    symbol: "Er"
+    element: "Erbium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 69
+    symbol: "Tm"
+    element: "Thulium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 70
+    symbol: "Yb"
+    element: "Ytterbium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 71
+    symbol: "Lu"
+    element: "Lutetium"
+    group: 0
+    period: 6
+    module: "atom"
+  - number: 72
+    symbol: "Hf"
+    element: "Hafnium"
+    group: 4
+    period: 6
+    module: "atom"
+  - number: 73
+    symbol: "Ta"
+    element: "Tantalum"
+    group: 5
+    period: 6
+    module: "atom"
+  - number: 74
+    symbol: "W"
+    element: "Tungsten"
+    group: 6
+    period: 6
+    module: "atom"
+  - number: 75
+    symbol: "Re"
+    element: "Rhenium"
+    group: 7
+    period: 6
+    module: "atom"
+  - number: 76
+    symbol: "Os"
+    element: "Osmium"
+    group: 8
+    period: 6
+    module: "atom"
+  - number: 77
+    symbol: "Ir"
+    element: "Iridium"
+    group: 9
+    period: 6
+    module: "atom"
+  - number: 78
+    symbol: "Pt"
+    element: "Platinum"
+    group: 10
+    period: 6
+    module: "atom"
+  - number: 79
+    symbol: "Au"
+    element: "Gold"
+    group: 11
+    period: 6
+    module: "atom"
+  - number: 80
+    symbol: "Hg"
+    element: "Mercury"
+    group: 12
+    period: 6
+    module: "atom"
+  - number: 81
+    symbol: "Tl"
+    element: "Thallium"
+    group: 13
+    period: 6
+    module: "atom"
+  - number: 82
+    symbol: "Pb"
+    element: "Lead"
+    group: 14
+    period: 6
+    module: "atom"
+  - number: 83
+    symbol: "Bi"
+    element: "Bismuth"
+    group: 15
+    period: 6
+    module: "atom"
+  - number: 84
+    symbol: "Po"
+    element: "Polonium"
+    group: 16
+    period: 6
+    module: "atom"
+  - number: 85
+    symbol: "At"
+    element: "Astatine"
+    group: 17
+    period: 6
+    module: "atom"
+  - number: 86
+    symbol: "Rn"
+    element: "Radon"
+    group: 18
+    period: 6
+    module: "atom"
+  - number: 87
+    symbol: "Fr"
+    element: "Francium"
+    group: 1
+    period: 7
+    module: "atom"
+  - number: 88
+    symbol: "Ra"
+    element: "Radium"
+    group: 2
+    period: 7
+    module: "atom"
+  - number: 89
+    symbol: "Ac"
+    element: "Actinium"
+    group: 3
+    period: 7
+    module: "atom"
+  - number: 90
+    symbol: "Th"
+    element: "Thorium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 91
+    symbol: "Pa"
+    element: "Protactinium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 92
+    symbol: "U"
+    element: "Uranium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 93
+    symbol: "Np"
+    element: "Neptunium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 94
+    symbol: "Pu"
+    element: "Plutonium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 95
+    symbol: "Am"
+    element: "Americium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 96
+    symbol: "Cm"
+    element: "Curium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 97
+    symbol: "Bk"
+    element: "Berkelium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 98
+    symbol: "Cf"
+    element: "Californium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 99
+    symbol: "Es"
+    element: "Einsteinium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 100
+    symbol: "Fm"
+    element: "Fermium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 101
+    symbol: "Md"
+    element: "Mendelevium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 102
+    symbol: "No"
+    element: "Nobelium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 103
+    symbol: "Lr"
+    element: "Lawrencium"
+    group: 0
+    period: 7
+    module: "atom"
+  - number: 104
+    symbol: "Rf"
+    element: "Rutherfordium"
+    group: 4
+    period: 7
+    module: "atom"
+  - number: 105
+    symbol: "Db"
+    element: "Dubnium"
+    group: 5
+    period: 7
+    module: "atom"
+  - number: 106
+    symbol: "Sg"
+    element: "Seaborgium"
+    group: 6
+    period: 7
+    module: "atom"
+  - number: 107
+    symbol: "Bh"
+    element: "Bohrium"
+    group: 7
+    period: 7
+    module: "atom"
+  - number: 108
+    symbol: "Hs"
+    element: "Hassium"
+    group: 8
+    period: 7
+    module: "atom"
+  - number: 109
+    symbol: "Mt"
+    element: "Meitnerium"
+    group: 9
+    period: 7
+    module: "atom"
+  - number: 110
+    symbol: "Ds"
+    element: "Darmstadtium"
+    group: 10
+    period: 7
+    module: "atom"
+  - number: 111
+    symbol: "Rg"
+    element: "Roentgenium"
+    group: 11
+    period: 7
+    module: "atom"
+  - number: 112
+    symbol: "Cn"
+    element: "Copernicium"
+    group: 12
+    period: 7
+    module: "atom"
+  - number: 113
+    symbol: "Nh"
+    element: "Nihonium"
+    group: 13
+    period: 7
+    module: "atom"
+  - number: 114
+    symbol: "Fl"
+    element: "Flerovium"
+    group: 14
+    period: 7
+    module: "atom"
+  - number: 115
+    symbol: "Mc"
+    element: "Moscovium"
+    group: 15
+    period: 7
+    module: "atom"
+  - number: 116
+    symbol: "Lv"
+    element: "Livermorium"
+    group: 16
+    period: 7
+    module: "atom"
+  - number: 117
+    symbol: "Ts"
+    element: "Tennessine"
+    group: 17
+    period: 7
+    module: "atom"
+  - number: 118
+    symbol: "Og"
+    element: "Oganesson"
+    group: 18
+    period: 7
+    module: "atom"
+  - number: 0
+    symbol: "1"
+    module: "bond"
+  - number: 0
+    symbol: "2"
+    module: "bond"
+  - number: 0
+    symbol: "3"
+    module: "bond"
+  - number: 0
+    symbol: "4"
+    module: "bond"
+  - number: 0
+    symbol: "5"
+    module: "bond"
+  - number: 0
+    symbol: "n"
+    module: "bond"
+  - number: 0
+    symbol: "n"
+    module: "bond"
+  - number: 0
+    symbol: "api"
+    module: "treactor"
+  - number: 0
+    symbol: "ui"
+    module: "treactor"
