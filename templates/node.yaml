@@ -5,7 +5,7 @@
 {{- if lt $element.number 1.0 -}}
   {{- $framework = "treactorGo" -}}
   {{- if eq $element.symbol "ui" -}}
-    {{- $framework = "treactorJava" -}}
+    {{- $framework = "treactorNode" -}}
   {{- end -}}
   {{- else -}}
   {{- range $i, $period := $.Values.periods -}}
@@ -23,6 +23,8 @@
   {{- $image := "" -}}
   {{- $version := "" -}}
   {{- $current := $.Values.treactor -}}
+  {{- $otlpProtocol := "grpc" -}}
+  {{- $otlpPort := "4317" -}}
 {{- if eq "treactorJava" $framework -}}
   {{- $current = $.Values.treactorJava -}}
   {{- $image = printf "%s:%s" $current.image.repository $current.image.tag -}}
@@ -124,11 +126,15 @@ spec:
             - name: "OTEL_EXPORTER"
               value: "otlp"
             - name: "OTEL_EXPORTER_OTLP_ENDPOINT"
-              value: "$(HOST_IP):4317"
+              value: "$(HOST_IP):{{ $otlpPort }}"
+            - name: "OTEL_EXPORTER_OTLP_PROTOCOL"
+              value: "{{ $otlpProtocol }}"
             - name: "OTEL_RESOURCE_ATTRIBUTES"
               value: "k8s.pod.uid=$(K8S_POD_UID),k8s.pod.name=$(K8S_POD_NAME),k8s.namespace.name=$(K8S_NAMESPACE_NAME),service.name=$(SERVICE_NAME),service.version=$(SERVICE_VERSION)"
             - name: TREACTOR_MODE
-              value: 'k8s'
+              value: 'cluster'
+            - name: TREACTOR_NUMBER
+              value: '{{ $element.number }}'
             - name: TREACTOR_TRACE_PROPAGATION
               value: 'w3c'
             - name: TREACTOR_TRACE_INTERNAL
