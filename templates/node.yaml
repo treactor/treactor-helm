@@ -135,6 +135,14 @@ spec:
               value: 'cluster'
             - name: TREACTOR_NUMBER
               value: '{{ $element.number }}'
+            - name: TREACTOR_MAX_NUMBER
+              value: '{{ $.Values.maxNumber }}'
+            - name: TREACTOR_MAX_BOND
+              value: '{{ $.Values.maxBond }}'
+            - name: TREACTOR_MODULE
+              value: '{{$element.module}}'
+            - name: TREACTOR_COMPONENT
+              value: '{{lower $element.symbol}}'
             - name: TREACTOR_TRACE_PROPAGATION
               value: 'w3c'
             - name: TREACTOR_TRACE_INTERNAL
