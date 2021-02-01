@@ -91,8 +91,10 @@ spec:
   template:
     metadata:
       labels:
-        app: {{$element.module}}-{{lower $element.symbol}}
-        version: '{{$version}}'
+        app: "{{$element.module}}-{{ lower $element.symbol }}"
+        version: "{{ $version }}"
+        module: "{{ $element.module }}"
+        compunenent: "{{ lower $element.symbol }}"
     spec:
       serviceAccountName: {{$element.module}}-{{lower $element.symbol}}
       containers:

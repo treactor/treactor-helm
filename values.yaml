@@ -800,9 +800,6 @@ elements:
     symbol: "n"
     module: "bond"
   - number: 0
-    symbol: "n"
-    module: "bond"
-  - number: 0
     symbol: "api"
     module: "treactor"
   - number: 0

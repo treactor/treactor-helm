@@ -28,6 +28,11 @@ treactorGo:
 maxNumber: 10 
 ```
 
+
+`helm upgrade main . --values values-local.yaml`
+
+
+
 Execute helm template by providing the local values file.
 
 `helm template --values values-local.yaml . > out.yaml`
