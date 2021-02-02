@@ -1,8 +1,8 @@
 {{ range $i, $element := .Values.elements -}}
-{{- if le $element.number $.Values.maxNumber -}}
+{{- if or (le $element.number $.Values.maxNumber) (gt $element.number 200.0) -}}
 {{- $framework := "" -}}
 {{/* special selection for bond, ui and api */}}
-{{- if lt $element.number 1.0 -}}
+{{- if gt $element.number 200.0 -}}
   {{- $framework = "treactorGo" -}}
   {{- if eq $element.symbol "ui" -}}
     {{- $framework = "treactorNode" -}}
@@ -149,11 +149,36 @@ spec:
               value: 'w3c'
             - name: TREACTOR_TRACE_INTERNAL
               value: '1'
+            - name: TREACTOR_RANDOM
+              value: '{{ $.Values.random }}'
           ports:
             - containerPort: 3330
               name: http
               protocol: TCP
           {{ include "treactor.resource" $current | indent 10 | trim }}
 ---
+{{- if eq "atom" $element.module -}}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: atom-{{lower $element.symbol}}-about
+  namespace: treactor
+spec:
+  hosts:
+    - "treactor.ioto.pe"
+  gateways:
+    - treactor
+  exportTo:
+    - "."
+    - "istio-system"
+  http:
+    - route:
+        - destination:
+            host: {{$element.module}}-{{lower $element.symbol}}
+      match:
+        - uri:
+            prefix: "/treact/nodes/{{ $element.number }}/info"
+---
+{{- end -}}
 {{- end -}}
 {{- end }}

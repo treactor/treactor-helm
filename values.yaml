@@ -38,6 +38,8 @@ treactorDotNET:
 maxNumber: 118
 maxBond: 5
 
+random: "nothing_secret"
+
 periods:
   - period: 1
     framework: ""
@@ -781,27 +783,27 @@ elements:
     group: 18
     period: 7
     module: "atom"
-  - number: 0
+  - number: 201
     symbol: "1"
     module: "bond"
-  - number: 0
+  - number: 202
     symbol: "2"
     module: "bond"
-  - number: 0
+  - number: 203
     symbol: "3"
     module: "bond"
-  - number: 0
+  - number: 204
     symbol: "4"
     module: "bond"
-  - number: 0
+  - number: 205
     symbol: "5"
     module: "bond"
-  - number: 0
+  - number: 299
     symbol: "n"
     module: "bond"
-  - number: 0
+  - number: 501
     symbol: "api"
     module: "treactor"
-  - number: 0
+  - number: 500
     symbol: "ui"
     module: "treactor"
