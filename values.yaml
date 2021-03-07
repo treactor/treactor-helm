@@ -39,6 +39,7 @@ maxNumber: 118
 maxBond: 5
 
 random: "nothing_secret"
+hostname: "treactor.example.com"
 
 periods:
   - period: 1

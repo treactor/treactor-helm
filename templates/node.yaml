@@ -157,15 +157,15 @@ spec:
               protocol: TCP
           {{ include "treactor.resource" $current | indent 10 | trim }}
 ---
-{{- if eq "atom" $element.module -}}
+{{/*{{- if eq "atom" $element.module -}}*/}}
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: atom-{{lower $element.symbol}}-about
+  name: {{ $element.module }}-{{lower $element.symbol}}-about
   namespace: treactor
 spec:
   hosts:
-    - "treactor.ioto.pe"
+    - "{{ $.Values.hostname }}"
   gateways:
     - treactor
   exportTo:
@@ -174,11 +174,11 @@ spec:
   http:
     - route:
         - destination:
-            host: {{$element.module}}-{{lower $element.symbol}}
+            host: {{ $element.module }}-{{lower $element.symbol}}
       match:
         - uri:
             prefix: "/treact/nodes/{{ $element.number }}/info"
 ---
-{{- end -}}
+{{/*{{- end -}}*/}}
 {{- end -}}
 {{- end }}
