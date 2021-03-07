@@ -21,6 +21,8 @@ spec:
             exact: /robot.txt
         - uri:
             prefix: /static
+        - uri:
+            prefix: /treact/reactions
       route:
         - destination:
             host: treactor-ui
