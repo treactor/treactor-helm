@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: treactor-ui
+  namespace: treactor
+spec:
+  exportTo:
+    - .
+    - istio-system
+  gateways:
+    - treactor
+  hosts:
+    - "{{ .Values.hostname }}"
+  http:
+    - match:
+        - uri:
+            exact: /v1/trace
+      route:
+        - destination:
+            host: {{ .Values.collector }}
