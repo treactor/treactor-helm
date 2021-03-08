@@ -18,3 +18,5 @@ spec:
       route:
         - destination:
             host: {{ .Values.collector }}
+            port:
+              number: 4317
