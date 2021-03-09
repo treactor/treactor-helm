@@ -17,6 +17,6 @@ spec:
             exact: /v1/trace
       route:
         - destination:
-            host: {{ .Values.collector }}
+            host: {{ .Values.collector.host }}
             port:
-              number: 4317
+              number: {{ .Values.collector.port }}

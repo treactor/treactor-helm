@@ -40,7 +40,10 @@ maxBond: 5
 
 random: "nothing_secret"
 hostname: "treactor.example.com"
-collector: ""
+
+collector:
+  host: "otel-collector"
+  port: 55681
 
 periods:
   - period: 1
