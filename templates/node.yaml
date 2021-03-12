@@ -128,7 +128,7 @@ spec:
             - name: "OTEL_EXPORTER"
               value: "otlp"
             - name: "OTEL_EXPORTER_OTLP_ENDPOINT"
-              value: "$(HOST_IP):{{ $otlpPort }}"
+              value: "http://$(HOST_IP):{{ $otlpPort }}"
             - name: "OTEL_EXPORTER_OTLP_PROTOCOL"
               value: "{{ $otlpProtocol }}"
             - name: "OTEL_RESOURCE_ATTRIBUTES"
