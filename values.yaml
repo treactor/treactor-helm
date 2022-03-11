@@ -812,3 +812,7 @@ elements:
   - number: 500
     symbol: "ui"
     module: "treactor"
+
+options:
+  createNamespace: true
+  useGatewayApi: true

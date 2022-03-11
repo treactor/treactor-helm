@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: treactor
+spec:
+  gatewayClassName: istio
+  listeners:
+    - allowedRoutes:
+        namespaces:
+          from: All
+      hostname: {{ .Values.hostname }}
+      name: default
+      port: 80
+      protocol: HTTP
